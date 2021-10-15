@@ -9,6 +9,23 @@ The AVR-based frequency counter was developed and used as part of the [Embedded 
 
 ## Contents
 
+* [Components (BOM)](#components--bom-)
+* [Built with](#built-with)
+* [Preparation](#preparation)
+* [I2C Interface](#i2c-interface)
++ [Reset request](#reset-request)
++ [Result ready](#result-ready)
++ [Result sampling](#result-sampling)
++ [Result resolution](#result-resolution)
++ [Input channel selection](#input-channel-selection)
+* [Evaluation](#evaluation)
+* [Contributors](#contributors)
+* [Changelog](#changelog)
+* [License](#license)
+
+
+## Directory structure
+
 ```
 .
 ├── docs                : documents
