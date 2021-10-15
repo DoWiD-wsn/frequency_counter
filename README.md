@@ -81,7 +81,80 @@ In our case, the resulting AVRDUDE arguments are:
 
 ## I2C Interface
 
-*tbd*
+The AVR-based frequency counter can be used as an I2C slave.
+The I2C address can be defined in software (default: 0x24).
+
+Basically, there are four 8-bit registers available and accessible via I2C, that are:
+
+1. Configuration register `CONFIG` (address: `0x00`; R/W)
+2. Frequency LSB register `FREQ-LSB` (address: `0x01`; R)
+3. Frequency MSB register `FREQ-MSB` (address: `0x02`; R)
+4. Frequency extended MSB register `FREQ-XMSB` (address: `0x03`; R)
+
+As can be seen, all registers can be read but only the `CONFIG` register allows overwriting its value; the measured frequency value can only be read.
+
+With the `CONFIG` register, the basic operation of the frequency counter can be defined, that is, requesting a software reset, checking the result ready flag, setting the sampling rate, defining the frequency resolution, and selecting the input channel (see figure below).
+The default value of the `CONFIG` register is `0x00`.
+
+![Prototype (/media/i2c/i2c_reg-config.svg)](media/i2c/i2c_reg-config.svg)
+
+
+### Reset request
+
+The reset request bit can be used to cause a software reset of the frequency counter, that is, all counter modules and internal counter values are reset.
+The configuration is not changed.
+
+| `RST` | Effect        |
+|-------|---------------|
+| `0`   | no effect     |
+| `1`   | request reset |
+
+
+### Result ready
+
+The result ready flag indicates whether a frequency measurement is ready to be read.
+
+| `RDY` | Meaning              |
+|-------|----------------------|
+| `0`   | result not available |
+| `1`   | result available     |
+
+
+### Result sampling
+
+The frequency counter offers to possibility to sample several measurements and provide the mean average to have more stable results.
+Thereby, one of four different sampling options can be selected.
+
+| `SMP1` | `SMP0` | Sampling             |
+|--------|--------|----------------------|
+| `0`    | `0`    | no sampling          |
+| `0`    | `1`    | 3 samples            |
+| `1`    | `0`    | 5 samples            |
+| `1`    | `1`    | 10 samples           |
+
+
+### Result resolution
+
+The resulting frequency can be read in three different resolution.
+
+| `RES1` | `RES0` | Resolution (result width) |
+|--------|--------|---------------------------|
+| `0`    | `0`    | Hz (24 bit: LSB+MSB+XMSB) |
+| `0`    | `1`    | kHz (16 bit: LSB+MSB)     |
+| `1`    | `0`    | MHz (8 bit: LSB)          |
+| `1`    | `1`    | reserved                  |
+
+
+### Input channel selection
+
+With the `CHSEL` bits, the input channel can be selected, that is, the channel that is latched through by the 4-to-1 multiplexer.
+
+| `CHSEL1` | `CHSEL0` | Channel |
+|----------|----------|---------|
+| `0`      | `0`      | CH0     |
+| `0`      | `1`      | CH1     |
+| `1`      | `0`      | CH2     |
+| `1`      | `1`      | CH3     |
 
 
 ## Evaluation
