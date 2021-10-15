@@ -63,6 +63,7 @@
  *                                                                    *
  *  Note:                                                             *
  *  -) Writing config works ... reading data not yet!                 *
+ *  -) TODO: implement sampling!                                      *
  *                                                                    *
  **********************************************************************/
 
@@ -223,7 +224,8 @@ ISR(INT0_vect) {
     TCNT1H = 0;
     TCNT1L = 0;
     /* Calculate resulting frequency (disable IRS meanwhile) */
-    uint32_t frequency = (cnt*1000)>>7;
+    uint32_t frequency = (cnt*1000)>>7;                                 // TODO: simplify!?
+                                                                        // TODO: 10 Hz resolution -> clear lowest digit -> 0
     uint8_t resolution = (*config & I2C_CONFIG_RES_MASK) >> I2C_CONFIG_RES;
     cli();
     switch(resolution) {
@@ -372,6 +374,8 @@ ISR(TWI_vect) {
                 } else {
                     /*** DBG ***/ uart_puts("TW_SR_DATA_ACK-2 ");uart_print_hex(TWDR);uart_puts("\n");
                     
+                    /* TODO: maybe the fault is here? */
+                    
                     /* Invalid request */
                     i2c_data_pos = I2C_REG_UNDEF;
                     /* Respond with NACK */
@@ -411,6 +415,9 @@ ISR(TWI_vect) {
                     /* Respond with NACK */
                     TWCR = TWCR_NACK;
                 } else {
+                    
+                    /* TODO: check if result is available */
+                    
                     /* Copy addressed result byte */
                     TWDR = i2c_data[i2c_data_pos];
                     /* Check if there is still data to read */
@@ -638,6 +645,7 @@ int main(void) {
     
     /* Main Routine */
 #if DEBUG_UART_ENABLE
+    while(1);
     while (1) {
         if(*config & _BV(I2C_CONFIG_RDY)) {
             /*** Write the latest frequency measurement ***/
