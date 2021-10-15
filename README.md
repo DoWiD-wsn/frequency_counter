@@ -4,6 +4,8 @@ The AVR-based frequency counter is partly based on the project developed by [Her
 It contains a ATmega8 responsible for measuring the frequency of a square-wave applied to one of four input channels (selectable) and acting as a TWI slave (I2C).
 With the current design, frequencies of up to 50 MHz are measurable with a precision of 10 Hz.
 
+The AVR-based frequency counter was developed and used as part of the [Embedded Testbench (ETB)](https://github.com/DoWiD-wsn/embedded_testbench) where it was used to measure the frequency stability of the internal clock of microcontroller units of embedded systems under different conditions such as ambient temperature and supply voltage level.
+
 
 ## Contents
 
@@ -84,9 +86,23 @@ In our case, the resulting AVRDUDE arguments are:
 
 ## Evaluation
 
+The concept was evaluated based on a prototype as shown below.
+In this prototype, the multiplexer was neglected and the input signal was connected to the counting stage via a jumper.
+
 ![Prototype (/media/evaluation/20201127_prototype.jpg)](media/evaluation/20201127_prototype.jpg)
 
+To check the proper functioning of the prototype, a second microcontroller was used that output its internal clock source via a GPIO pin (the AVR offer to output the clock source to a GPIO named `CLKO`).
+In this test setup, the clock source of the microcontroller under test was changed every few seconds between four different clock options:
+
+1. internal 8MHz RC oscillator (Fcpu = 8MHz)
+2. internal 8MHz RC oscillator with a prescaler of 8 (Fcpu = 1MHz)
+3. external 16MHz quartz oscillator (Fcpu = 16MHz)
+4. external 16MHz quartz oscillator with a prescaler of 8 (Fcpu = 2MHz)
+
 ![Prototype (/media/evaluation/20201129_first_measurement.png)](media/evaluation/20201129_first_measurement.png)
+
+These measurements were confirmed with an oscilloscope that also measured the frequency.
+Thereby, the expected accuracy of 10Hz could be confirmed.
 
 
 ## Contributors
