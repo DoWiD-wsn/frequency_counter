@@ -11,6 +11,23 @@ The AVR-based frequency counter was developed and used as part of the [Embedded 
 For more information on the PCB (and its design) refer to [docs/pcb_design.md](docs/pcb_design.md).
 
 
+## Directory structure
+
+```
+.
+├── docs                : documents
+│   ├── datasheets      : datasheets of used components
+│   └── pcb_design.md   : information on the PCB design
+├── kicad               : KiCad files
+├── media               : Miscellaneous media (images, etc.)
+│   ├── evaluation      : Image of a first prototype evaluation
+│   ├── i2c             : I2C register format
+│   ├── pcb             : Photos and rendered images of the PCB
+│   └── schematic       : SVG images of the schematics
+└── source              : C code sources for the ATmega8
+```
+
+
 ## Contents
 
 * [Description](#description)
@@ -22,18 +39,6 @@ For more information on the PCB (and its design) refer to [docs/pcb_design.md](d
 * [Changelog](#changelog)
 * [License](#license)
 
-
-## Directory structure
-
-```
-.
-├── docs                : documents
-│   └── datasheets      : datasheets of used components
-├── media               : Miscellaneous media (images, etc.)
-│   ├── evaluation      : Image of a first prototype evaluation
-│   └── schematic       : SVG images of the schematics
-└── source              : C code sources for the ATmega8
-```
 
 ## Description
 
