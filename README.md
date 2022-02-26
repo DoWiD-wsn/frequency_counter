@@ -6,10 +6,14 @@ With the current design, frequencies of up to 50 MHz are measurable with a preci
 
 The AVR-based frequency counter was developed and used as part of the [Embedded Testbench (ETB)](https://github.com/DoWiD-wsn/embedded_testbench) where it was used to measure the frequency stability of the internal clock of microcontroller units of embedded systems under different conditions such as ambient temperature and supply voltage level.
 
+![PCB 3D (/media/pcb/frequency_counter-3d.png)](/media/pcb/frequency_counter-3d.png)
+
+For more information on the PCB (and its design) refer to [docs/pcb_design.md](docs/pcb_design.md).
+
 
 ## Contents
 
-* [Components (BOM)](#components--bom-)
+* [Description](#description)
 * [Built with](#built-with)
 * [Preparation](#preparation)
 * [I2C Interface](#i2c-interface)
@@ -31,14 +35,7 @@ The AVR-based frequency counter was developed and used as part of the [Embedded 
 └── source              : C code sources for the ATmega8
 ```
 
-## Components (BOM)
-
-The following hardware components are required to build to AVR-based frequency counter:
-
-* 1x [ATmega8](https://www.microchip.com/wwwproducts/en/ATmega8) microcontroller ([datasheet](docs/datasheets/atmega8_-_datasheet.pdf))
-* 1x [74HC00](https://www.ti.com/product/SN74HC00) NAND gate ([datasheet](docs/datasheets/74HC00_-_datasheet.pdf))
-* 1x [74HC153](https://www.ti.com/product/SN74HC153) 4-to-1 multiplexer ([datasheet](docs/datasheets/74HC153_-_datasheet.pdf))
-* 3x [74HC4040](https://www.ti.com/product/SN74HC4040) asynchronous binary counter ([datasheet](docs/datasheets/74HC4040_-_datasheet.pdf))
+## Description
 
 **Schematic** (draft):  
 ![Schematic (/media/schematic/frequency_counter-draft.svg)](media/schematic/frequency_counter-draft.svg)

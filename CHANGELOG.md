@@ -10,6 +10,11 @@ However, the major and minor number are used to express the version of the hardw
 ### Removed
 
 
+## [0.2] - 2022-02-27
+### Added
+- Initial PCB design
+
+
 ## [0.1] - 2021-10-15
 ### Added
 - First design of the frequency counter

@@ -1,0 +1,18 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP SN74HC00PW
+D Quad 2-Input Positive-NAND Gates
+F http://www.ti.com/lit/gpn/SN74HC00
+$ENDCMP
+#
+$CMP SN74HC153PW
+D Texas Instruments SN74HC153PW, Multiplexer Dual 4:1, 16-Pin TSSOP
+F http://www.ti.com/lit/gpn/SN74HC153
+$ENDCMP
+#
+$CMP SN74HC4040PW
+D Counter Single 12-Bit Binary 16P TSSOP Texas Instruments SN74HC4040PW 12-stage Binary Counter, Up Counter, 2  6 V, 16-Pin TSSOP
+F http://www.ti.com/lit/ds/symlink/sn74hc4040.pdf
+$ENDCMP
+#
+#End Doc Library
