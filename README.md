@@ -1,7 +1,7 @@
 # AVR-based Frequency Counter
 
 The AVR-based frequency counter is partly based on the project developed by [Herbert Dingfelder](http://www.herbert-dingfelder.de/?page_id=304) with some extensions and modifications.
-It contains a ATmega8 responsible for measuring the frequency of a square-wave applied to one of four input channels (selectable) and acting as a TWI slave (I2C).
+It contains an ATmega8 responsible for measuring the frequency of a square-wave applied to one of four input channels (selectable by software) and acting as a TWI slave (I2C).
 With the current design, frequencies of up to 50 MHz are measurable with a precision of 10 Hz.
 
 The AVR-based frequency counter was developed and used as part of the [Embedded Testbench (ETB)](https://github.com/DoWiD-wsn/embedded_testbench) where it was used to measure the frequency stability of the internal clock of microcontroller units of embedded systems under different conditions such as ambient temperature and supply voltage level.
